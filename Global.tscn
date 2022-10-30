@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Global.gd" type="Script" id=1]
+
+[node name="Global" type="Node"]
+script = ExtResource( 1 )
+
+[node name="population_increase" type="Timer" parent="."]
+one_shot = true
+
+[node name="food_decrease_pop" type="Timer" parent="."]
+
+[node name="pop_starving" type="Timer" parent="."]
+one_shot = true
+
+[node name="natural_death_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="population_increase" to="." method="_on_population_increase_timeout"]
+[connection signal="timeout" from="food_decrease_pop" to="." method="_on_food_decrease_pop_timeout"]
+[connection signal="timeout" from="pop_starving" to="." method="_on_pop_starving_timeout"]
+[connection signal="timeout" from="natural_death_timer" to="." method="_on_natural_death_timer_timeout"]

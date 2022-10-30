@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Factory.gd" type="Script" id=1]
+[ext_resource path="res://Industry.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 467.932, 203.82 )
+
+[node name="Factory" type="Sprite"]
+position = Vector2( 99.6328, 47.5808 )
+scale = Vector2( 0.190734, 0.207615 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 4.57764e-05, 0 )
+scale = Vector2( 1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 10.3043, -0.323013 )
+shape = SubResource( 1 )
+
+[node name="Status" type="ColorRect" parent="."]
+process_priority = -1
+margin_left = -457.627
+margin_top = -204.143
+margin_right = -423.627
+margin_bottom = -171.143
+rect_pivot_offset = Vector2( -189, 59 )
+color = Color( 0, 1, 0, 1 )
+
+[node name="money_maker" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="money_maker" to="." method="_on_money_maker_timeout"]
